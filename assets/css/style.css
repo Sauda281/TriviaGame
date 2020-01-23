@@ -1,0 +1,36 @@
+body{
+	background-image: url(https://cdn.pixabay.com/photo/2017/04/25/22/22/anatomical-2261006_1280.jpg);
+	text-align: center;
+}
+
+.text-muted{
+	color: red;
+  font-family: cursive;
+
+}
+.last-seconds{
+  color: red;
+}
+.option{
+  margin: 15px;
+}
+
+h2 {
+  color: blue;
+}
+
+.jumbotron {
+  color: blue;
+}
+.container {
+  background-color: #95B9C7;
+  opacity: 0.7;
+  margin: 75px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+.btn {
+  color: purple;
+  background-color: pink;
+}
