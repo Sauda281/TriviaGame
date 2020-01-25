@@ -1,5 +1,5 @@
 body{
-	background-image: url(https://cdn.pixabay.com/photo/2017/04/25/22/22/anatomical-2261006_1280.jpg);
+	background-image: url(https://previews.123rf.com/images/iimages/iimages1607/iimages160700610/59931133-human-anatomy-model-with-different-systems-illustration.jpg);
 	text-align: center;
 }
 
@@ -24,13 +24,10 @@ h2 {
 }
 .container {
   background-color: #95B9C7;
-  opacity: 0.7;
+  opacity: 0.9;
   margin: 75px;
   margin-left: auto;
   margin-right: auto;
 
 }
-.btn {
-  color: purple;
-  background-color: pink;
-}
+

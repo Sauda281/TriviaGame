@@ -29,7 +29,8 @@ $(document).ready(function(){
       q6: 'What is the largest organ in the body?',
       q7: "Which of these is not part of the eye?",
       q8: 'How many bones does an adult human skeleton has?',
-      q9: 'Who is the father of modern anatomy and Physiology?'
+      q9: 'Who is the father of modern anatomy and Physiology?',
+      q10: 'where does food digestion begins from?',
     },
     options: {
       q1: ['10', '4', '3', '8'],
@@ -41,6 +42,7 @@ $(document).ready(function(){
       q7: ['cornea', 'iris', 'macula','none of the above'],
       q8: ['206','270','300','210'],
       q9: ['Andreas Vesalius', 'Poccahontas', 'Herophilus','Hippocrates'],
+      q10: ['stomach', 'mouth', 'small intestine', 'lungs'],
     },
   
     answers: {
@@ -53,19 +55,22 @@ $(document).ready(function(){
       q7: 'none of the above',
       q8: '206',
       q9: 'Andreas Vesalius',
+      q10: 'mouth',
     },
   
-     images: {
-      q1: 'https://media0.giphy.com/media/xT9DPMuhWi7YN5QY48/giphy.gif?cid=790b76115ac8f3a09d9d5e121e3c0bfc07382b386b45a186&rid=giphy.gif',
-      q2: 'right ventricle',
-      q3: 'brain and spinal cord',
-      q4: 'neurons',
-      q5: 'extracellular fluid',
-      q6: 'skin',
-      q7: 'none of the above',
-      q8: '206',
-      q9: 'Andreas Vesalius',
-    },
+    images: {
+       q1: 'https://media2.giphy.com/media/cEDZpEumzeJ3i/giphy.gif?cid=790b7611f03fded48c3a10efe18663c007e5462a4981e9c1&rid=giphy.gif',
+       q2: 'https://media1.giphy.com/media/oSH9ZZ9vWNByU/giphy.gif?cid=790b7611f03fded48c3a10efe18663c007e5462a4981e9c1&rid=giphy.gif',
+       q3: 'https://media2.giphy.com/media/38tjCITcNUmWc/giphy.gif?cid=790b76110276864ece1453c800a8410fca16f2637c96caf1&rid=giphy.gif',
+       q4: 'https://media0.giphy.com/media/ojmB7lOn3VUU8/giphy.gif?cid=790b7611f602f94c5041302ff0a55987ca1755d00f7bd7d1&rid=giphy.gif',
+       q5: 'https://media0.giphy.com/media/3o85xATk5jD26iO0Ss/giphy.gif?cid=790b76119ad63c5d953786ab70722a61566333e2d8b6e9d1&rid=giphy.gif',
+       q6: 'https://media0.giphy.com/media/l3Ucsc7Zk4upFzWGk/giphy.gif?cid=790b76115c59ed74959c9f48f12eccb53262fa763ca877a6&rid=giphy.gif',
+       q7: 'https://images.emedicinehealth.com/images/slideshow/eye_diseases_and_cond_s2_illustartion_anatomy_of_eye.jpg',
+       q8: 'https://media3.giphy.com/media/3ohhwvOnBaE8TtyBaw/giphy.gif?cid=790b76110b1fa3afdddb880ad98b71a578ddfbeddf60b3ab&rid=giphy.gif',
+       q9: 'https://images.theconversation.com/files/68085/original/image-20141229-8211-kqouyx.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=237&fit=clip',
+       q10:'https://media1.giphy.com/media/HoAR9LkExGGJO/giphy.gif?cid=790b76110b940953f63fb4cc34b203a2b55548698be62d62&rid=giphy.gif',
+     },
+  
   
     // method to start game
     startGame: function(){
@@ -115,6 +120,8 @@ $(document).ready(function(){
   
       // an array of all the user options for the current question
       var questionOptions = Object.values(trivia.options)[trivia.currentSet];
+
+      var img = Object.values(trivia.images)[trivia.currentSet];
   
       // creates all the trivia guess options in the html
       $.each(questionOptions, function(index, key){
@@ -150,7 +157,7 @@ $(document).ready(function(){
   
         // adds results of game (correct, incorrect, unanswered) to the page
         $('#results')
-          .html('<h3>Thank you for playing!</h3>'+
+          .html('<h3>Thank you!</h3>'+
           '<p>Correct: '+ trivia.correct +'</p>'+
           '<p>Incorrect: '+ trivia.incorrect +'</p>'+
           '<p>Unaswered: '+ trivia.unanswered +'</p>'+
@@ -181,7 +188,7 @@ $(document).ready(function(){
   
         trivia.correct++;
         clearInterval(trivia.timerId);
-        resultId = setTimeout(trivia.guessResult, 1000);
+        resultId = setTimeout(trivia.guessResult, 2000);
         $('#results').html('<h3>Correct Answer!</h3>');
       $("#results_img").attr('src', Object.values(trivia.images)[trivia.currentSet]);
       }
@@ -192,8 +199,8 @@ $(document).ready(function(){
   
         trivia.incorrect++;
         clearInterval(trivia.timerId);
-        resultId = setTimeout(trivia.guessResult, 1000);
-        $('#results').html('<h3>try again next time! '+ images + currentAnswer +'</h3>');
+        resultId = setTimeout(trivia.guessResult, 2000);
+        $('#results').html('<h3>nope, the answer is '+ currentAnswer +'</h3>');
         $("#results_img").attr('src', Object.values(trivia.images)[trivia.currentSet]);
       }
   
@@ -207,6 +214,7 @@ $(document).ready(function(){
       // remove the options and results
       $('.option').remove();
       $('#results h3').remove();
+      $('#results_img').empty()
   
       // begin next question
       trivia.nextQuestion();
