@@ -30,7 +30,7 @@ $(document).ready(function(){
       q7: "Which of these is not part of the eye?",
       q8: 'How many bones does an adult human skeleton has?',
       q9: 'Who is the father of modern anatomy and Physiology?',
-      q10: 'where does food digestion begins from?',
+      q10: 'where does food digestion begin from?',
     },
     options: {
       q1: ['10', '4', '3', '8'],
@@ -79,6 +79,7 @@ $(document).ready(function(){
       trivia.correct = 0;
       trivia.incorrect = 0;
       trivia.unanswered = 0;
+    //   trivia.images = '';
       clearInterval(trivia.timerId);
   
       // show game section
@@ -202,6 +203,7 @@ $(document).ready(function(){
         resultId = setTimeout(trivia.guessResult, 2000);
         $('#results').html('<h3>nope, the answer is '+ currentAnswer +'</h3>');
         $("#results_img").attr('src', Object.values(trivia.images)[trivia.currentSet]);
+        $("#imgsrcdiv").append($("img"))
       }
   
     },
@@ -210,11 +212,13 @@ $(document).ready(function(){
   
       // increment to next question set
       trivia.currentSet++;
+    //   trivia.images++;
   
       // remove the options and results
       $('.option').remove();
       $('#results h3').remove();
-      $('#results_img').empty()
+      $('#results_img').attr(src = '');
+    
   
       // begin next question
       trivia.nextQuestion();
